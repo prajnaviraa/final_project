@@ -1,0 +1,137 @@
+basePath: /
+definitions:
+  main.Assignee:
+    properties:
+      assigneeName:
+        type: string
+      assigneePos:
+        type: string
+      personID:
+        type: integer
+    type: object
+  main.Todo:
+    properties:
+      assignedTo:
+        items:
+          $ref: '#/definitions/main.Assignee'
+        type: array
+      deadline:
+        type: string
+      taskDesc:
+        type: string
+      taskId:
+        type: integer
+      taskType:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: soberkoder@swagger.io
+    name: API Support
+  description: This is a todo list management application
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Todo Application
+  version: "1.0"
+paths:
+  /todos:
+    get:
+      consumes:
+      - application/json
+      description: Get all todos
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/main.Todo'
+            type: array
+      summary: Get all todos
+      tags:
+      - todos
+    post:
+      consumes:
+      - application/json
+      description: Create a new Todo
+      parameters:
+      - description: Create todo
+        in: body
+        name: todo
+        required: true
+        schema:
+          $ref: '#/definitions/main.Todo'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.Todo'
+      summary: Create a new Todo
+      tags:
+      - todos
+  /todos/{taskId}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete the order corresponding to taskId
+      parameters:
+      - description: ID of the task to be deleted
+        in: path
+        name: taskId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+      summary: Delete a task identified by the input taskId
+      tags:
+      - todos
+    get:
+      consumes:
+      - application/json
+      description: Get all details of a task corresponding to taskId
+      parameters:
+      - description: ID of the task
+        in: path
+        name: taskId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.Todo'
+      summary: Get all details for a given taskId
+      tags:
+      - todos
+    post:
+      consumes:
+      - application/json
+      description: Update the task corresponding to taskId
+      parameters:
+      - description: ID of the task to be updated
+        in: path
+        name: taskId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.Todo'
+      summary: Update the task identified by the input taskId
+      tags:
+      - todos
+swagger: "2.0"

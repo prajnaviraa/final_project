@@ -3,10 +3,13 @@ definitions:
   main.Assignee:
     properties:
       assigneeName:
+        example: nama1
         type: string
       assigneePos:
+        example: position1
         type: string
       personID:
+        example: 1
         type: integer
     type: object
   main.Todo:
@@ -16,18 +19,22 @@ definitions:
           $ref: '#/definitions/main.Assignee'
         type: array
       deadline:
+        example: "2021-07-26T00:00:00Z"
         type: string
       taskDesc:
+        example: create rest API
         type: string
       taskId:
+        example: 1
         type: integer
       taskType:
+        example: final project
         type: string
     type: object
 host: localhost:8080
 info:
   contact:
-    email: soberkoder@swagger.io
+    email: apisupport@swagger.io
     name: API Support
   description: This is a todo list management application
   license:
@@ -79,7 +86,7 @@ paths:
     delete:
       consumes:
       - application/json
-      description: Delete the order corresponding to taskId
+      description: Delete the task identified by the input taskId
       parameters:
       - description: ID of the task to be deleted
         in: path
@@ -91,7 +98,7 @@ paths:
       responses:
         "204":
           description: No Content
-      summary: Delete a task identified by the input taskId
+      summary: Delete a task
       tags:
       - todos
     get:
@@ -111,13 +118,13 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/main.Todo'
-      summary: Get all details for a given taskId
+      summary: Get all details for a task
       tags:
       - todos
-    post:
+    put:
       consumes:
       - application/json
-      description: Update the task corresponding to taskId
+      description: Update the task corresponding to the input taskId
       parameters:
       - description: ID of the task to be updated
         in: path
@@ -131,7 +138,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/main.Todo'
-      summary: Update the task identified by the input taskId
+      summary: Update a task
       tags:
       - todos
 swagger: "2.0"

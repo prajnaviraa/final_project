@@ -21,7 +21,7 @@ var doc = `{
         "termsOfService": "http://swagger.io/terms/",
         "contact": {
             "name": "API Support",
-            "email": "soberkoder@swagger.io"
+            "email": "apisupport@swagger.io"
         },
         "license": {
             "name": "Apache 2.0",
@@ -102,7 +102,7 @@ var doc = `{
                 "tags": [
                     "todos"
                 ],
-                "summary": "Get all details for a given taskId",
+                "summary": "Get all details for a task",
                 "parameters": [
                     {
                         "type": "integer",
@@ -121,8 +121,8 @@ var doc = `{
                     }
                 }
             },
-            "post": {
-                "description": "Update the task corresponding to taskId",
+            "put": {
+                "description": "Update the task corresponding to the input taskId",
                 "consumes": [
                     "application/json"
                 ],
@@ -132,7 +132,7 @@ var doc = `{
                 "tags": [
                     "todos"
                 ],
-                "summary": "Update the task identified by the input taskId",
+                "summary": "Update a task",
                 "parameters": [
                     {
                         "type": "integer",
@@ -152,7 +152,7 @@ var doc = `{
                 }
             },
             "delete": {
-                "description": "Delete the order corresponding to taskId",
+                "description": "Delete the task identified by the input taskId",
                 "consumes": [
                     "application/json"
                 ],
@@ -162,7 +162,7 @@ var doc = `{
                 "tags": [
                     "todos"
                 ],
-                "summary": "Delete a task identified by the input taskId",
+                "summary": "Delete a task",
                 "parameters": [
                     {
                         "type": "integer",
@@ -185,13 +185,16 @@ var doc = `{
             "type": "object",
             "properties": {
                 "assigneeName": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "nama1"
                 },
                 "assigneePos": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "position1"
                 },
                 "personID": {
-                    "type": "integer"
+                    "type": "integer",
+                    "example": 1
                 }
             }
         },
@@ -205,16 +208,20 @@ var doc = `{
                     }
                 },
                 "deadline": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "2021-07-26T00:00:00Z"
                 },
                 "taskDesc": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "create rest API"
                 },
                 "taskId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "example": 1
                 },
                 "taskType": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "final project"
                 }
             }
         }

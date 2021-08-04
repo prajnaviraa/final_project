@@ -125,7 +125,7 @@ func getTodo(w http.ResponseWriter, r *http.Request) {
 // @Produce  json
 // @Param taskId path int true "ID of the task to be updated"
 // @Success 200 {object} Todo
-// @Router /todos/{taskId} [post]
+// @Router /todos/{taskId} [put]
 func updateTodo(w http.ResponseWriter, r *http.Request) {
 	var todoUpdate Todo
 	json.NewDecoder(r.Body).Decode(&todoUpdate)

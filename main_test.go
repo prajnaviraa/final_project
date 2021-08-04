@@ -35,7 +35,6 @@ func TestGetTodo(t *testing.T) {
 		t.Errorf("got wrong status code: %v expected: %v",
 			status, http.StatusOK)
 	}
-
 }
 
 func TestDeleteTodo(t *testing.T) {
